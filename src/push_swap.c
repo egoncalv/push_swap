@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/11 01:20:06 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/11 14:14:57 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,16 @@
 
 int main (int argc, char *argv[])
 {
+	t_list	*stack_a;
+	//t_list	*stack_b;
+	//t_list	*tmp;
+	int		i;
+
+	if (argc < 2)
+		return (1);
+	stack_a = ft_lstnew(ft_atoi(argv[1]));
+	i = 1;
+	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
+		ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(argv[i])));
 	return (1);
 }
