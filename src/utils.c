@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/11 17:18:56 by erickbarros      ###   ########.fr       */
+/*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
+/*   Updated: 2022/11/11 17:20:15 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include "../ft_printf/includes/ft_printf.h"
+int	is_duplicate(t_list *lst, int num)
+{
+	while (lst)
+	{
+		if (lst->content == num)
+			return (1);
+		lst = lst->next;
+	}
+	return (0);
+}
 
-int		is_duplicate(t_list *lst, int num);
-int		is_nbr(char	*argv);
-void	exit_error(void);
+int	is_nbr(char	*argv)
+{
+	int	i;
 
-#endif
+	i = -1;
+	if (argv[0] == '-')
+		i++;
+	while (argv[++i])
+		if (argv[i] < 48 || argv[i] > 57)
+			return (0);
+	return (1);
+}
+
+void	exit_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(0);
+}

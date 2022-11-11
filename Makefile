@@ -6,7 +6,7 @@
 #    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2022/11/11 15:16:29 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/11/11 17:18:35 by erickbarros      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
 
-SRC = src/push_swap.c \
+SRC = 	src/push_swap.c \
+		src/utils.c
 
 OBJ = $(SRC:.c=.o)
 
-LIB_OBJ = ft_printf/src/*.o \
+LIB_OBJ = 	ft_printf/src/*.o \
 			ft_printf/libft/*.o \
 
 all: $(NAME)
