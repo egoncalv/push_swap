@@ -1,4 +1,4 @@
-# push_swap
+<h1 align=center>push_swap</h1>
 
 Write a program in C called push_swap which calculates and displays on the standard output the smallest program, made of Push swap language instructions, that sorts the integers received as arguments.
 
