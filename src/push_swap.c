@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/11 17:20:22 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/15 16:18:35 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ int	main(int argc, char *argv[])
 			exit_error();
 		ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(argv[i])));
 	}
+/*	
+	while (stack_a)
+	{
+		ft_printf("%d\n", stack_a->content);
+		stack_a = stack_a->next;
+	}
+*/
 	return (1);
 }

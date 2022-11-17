@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ops_1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/11 17:35:54 by erickbarros      ###   ########.fr       */
+/*   Created: 2022/11/11 17:26:28 by erickbarros       #+#    #+#             */
+/*   Updated: 2022/11/15 16:17:25 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/push_swap.h"
 
-# include "../ft_printf/includes/ft_printf.h"
+// Swap the first 2 elements at the top of stack
+void	ft_swap(t_list *lst)
+{
+	int	tmp;
 
-int		is_duplicate(t_list *lst, int num);
-int		is_nbr(char	*argv);
-
-void	exit_error(void);
-
-void	ft_swap(t_list *lst);
-
-#endif
+	if (ft_lstsize(lst) < 2)
+		return ;
+	tmp = lst->content;
+	lst->content = lst->next->content;
+	lst->next->content = tmp;
+}

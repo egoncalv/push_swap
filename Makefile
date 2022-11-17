@@ -6,7 +6,7 @@
 #    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2022/11/11 17:18:35 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/11/11 17:26:44 by erickbarros      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 SRC = 	src/push_swap.c \
-		src/utils.c
+		src/utils.c \
+		src/ops_1.c
 
 OBJ = $(SRC:.c=.o)
 
