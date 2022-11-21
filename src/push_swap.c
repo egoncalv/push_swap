@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/15 16:18:35 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/21 22:57:42 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,24 @@
 
 int	main(int argc, char *argv[])
 {
-	t_list	*stack_a;
-	//t_list	*stack_b;
-	//t_list	*tmp;
+	t_stack	*a;
+	///t_stack	*b;
 	int		i;
 
 	if (argc < 2)
 		return (1);
-	stack_a = ft_lstnew(ft_atoi(argv[1]));
-	i = 1;
-	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
+	a = malloc(sizeof(t_stack *));
+	a->array = malloc(sizeof(int) * argc - 1);
+	i = 0;
+	while (argv[i + 1]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
 	{
-		if (is_duplicate(stack_a, ft_atoi(argv[i])) || !(is_nbr(argv[i])))
+		if (is_duplicate(a, ft_atoi(argv[i + 1])) || !(is_nbr(argv[i + 1])))
 			exit_error();
-		ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(argv[i])));
+		a->array[i] = ft_atoi(argv[i + 1]);
+		i++;
 	}
-/*	
-	while (stack_a)
-	{
-		ft_printf("%d\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
-*/
+	i = -1;
+	while (a->array[++i])
+		ft_printf("%d\n", a->array[i]);
 	return (1);
 }

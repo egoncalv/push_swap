@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
+#    By: egoncalv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 11:45:23 by egoncalv          #+#    #+#              #
-#    Updated: 2022/11/11 14:08:22 by erickbarros      ###   ########.fr        #
+#    Updated: 2021/12/06 18:07:45 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ BONUS = ft_lstnew.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
+		ft_lstmap.c \
 
 
 OBJ = $(SRC:.c=.o)
@@ -67,20 +68,26 @@ all:	$(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
+	@echo "$(NAME) was created"
 	@ranlib $(NAME)
+	@echo "$(NAME) was indexed"
 
 %.o: %.c
 	@gcc $(FLAG) -c $< -o $@
 
 bonus: $(OBJ) $(BONUS_OBJ)
 	@ar rc $(NAME) $(OBJ) $(BONUS_OBJ)
+	@echo "$(NAME) was created with bonuses"
 	@ranlib $(NAME)
+	@echo "$(NAME) was indexed"
 
 clean:
 	@rm -f $(OBJ) $(BONUS_OBJ)
+	@echo "OBJS removed"
 
 fclean:	clean
 	@rm -f $(NAME)
+	@echo "$(NAME) removed"
 
 re:	fclean $(NAME)
 

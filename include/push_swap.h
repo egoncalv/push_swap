@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/11 17:35:54 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/21 22:29:58 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 # include "../ft_printf/includes/ft_printf.h"
 
-int		is_duplicate(t_list *lst, int num);
+typedef struct	s_stack
+{
+	int	size;
+	int	*array;
+}		t_stack;
+
+
+int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);
 
 void	exit_error(void);

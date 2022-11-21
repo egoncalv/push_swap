@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/11 17:20:15 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/11/21 22:57:52 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	is_duplicate(t_list *lst, int num)
+int	is_duplicate(t_stack *stack, int num)
 {
-	while (lst)
+	int	i;
+
+	i = 0;
+	while (stack->array[i])
 	{
-		if (lst->content == num)
+		if (num == stack->array[i])
 			return (1);
-		lst = lst->next;
+		i++;
 	}
 	return (0);
 }
