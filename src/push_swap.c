@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/23 19:04:15 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:06:17 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	i = a->top;
+	swap_a(a);
 	while (a->array[i])
 	{
 		ft_printf("%d\n", a->array[i]);
