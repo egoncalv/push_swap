@@ -6,19 +6,19 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:22:21 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/23 19:05:57 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:08:37 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	swap_a(t_stack *a)
+void	sa(t_stack *a)
 {
 	if (swap(a) == 1)
 		ft_printf("sa\n");
 }
 
-void	swap_b(t_stack *b)
+void	sb(t_stack *b)
 {
 	if (swap(b) == 1)
 		ft_printf("sb\n");
