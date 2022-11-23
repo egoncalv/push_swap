@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/23 18:41:10 by egoncalv         ###   ########.fr       */
+/*   Created: 2022/11/23 18:22:21 by egoncalv          #+#    #+#             */
+/*   Updated: 2022/11/23 18:44:33 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../include/push_swap.h"
 
-# include "../ft_printf/includes/ft_printf.h"
-
-typedef struct	s_stack
+void	swap(t_stack *stack)
 {
-	int	top;
-	int	size;
-	int	*array;
-}		t_stack;
+	int	tmp;
 
-
-int		is_duplicate(t_stack *stack, int num);
-int		is_nbr(char	*argv);
-int		stack_size(t_stack *stack);
-
-void	exit_error(void);
-
-void	swap(t_stack *stack);
-
-#endif
+	if (stack_size(stack) < 2)
+		return ;
+	tmp = stack->array[stack->top];
+	stack->array[stack->top] = stack->array[stack->top + 1];
+	stack->array[stack->top + 1] = tmp;
+}

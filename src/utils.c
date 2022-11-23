@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/21 22:57:52 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:40:49 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ int	is_nbr(char	*argv)
 		if (argv[i] < 48 || argv[i] > 57)
 			return (0);
 	return (1);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack->array[stack->top + i])
+		i++;
+	return (i);
 }
 
 void	exit_error(void)

@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2022/11/21 22:52:34 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/11/23 18:34:42 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = push_swap
 
 SRC = 	src/push_swap.c \
 		src/utils.c \
+		src/stack_moves/swap.c
 
 OBJ = $(SRC:.c=.o)
 
