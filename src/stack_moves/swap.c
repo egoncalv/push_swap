@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:22:21 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/23 19:08:37 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:12:15 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	sb(t_stack *b)
 {
 	if (swap(b) == 1)
 		ft_printf("sb\n");
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	if (swap(a) == 1 || swap(b) == 1)
+		ft_printf("ss\n");
 }
 
 int	swap(t_stack *stack)

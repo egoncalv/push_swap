@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/23 19:08:26 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:12:26 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ void	exit_error(void);
 int		swap(t_stack *stack);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+
+
 
 #endif
