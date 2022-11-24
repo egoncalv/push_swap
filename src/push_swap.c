@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/24 10:45:38 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:19:01 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char *argv[])
 		a->array[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
+
 	i = a->top;
 	while (a->array[i])
 	{
