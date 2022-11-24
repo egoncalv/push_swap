@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/23 19:06:17 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/24 10:45:38 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int	main(int argc, char *argv[])
 {
 	t_stack	*a;
-	//t_stack	*b;
+	t_stack	*b;
 	int		i;
 
 	if (argc < 2)
 		return (1);
 	a = malloc(sizeof(t_stack *));
 	a->array = malloc(sizeof(int) * argc - 1);
+	b = malloc(sizeof(t_stack *));
+	b->array = malloc(sizeof(int) * argc -1);
 	a->top = 0;
 	i = 0;
 	while (argv[i + 1]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
@@ -32,7 +34,6 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	i = a->top;
-	swap_a(a);
 	while (a->array[i])
 	{
 		ft_printf("%d\n", a->array[i]);
@@ -40,5 +41,7 @@ int	main(int argc, char *argv[])
 	}
 	free (a->array);
 	free (a);
+	free (b->array);
+	free (b);
 	return (1);
 }
