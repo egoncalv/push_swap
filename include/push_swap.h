@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/24 11:34:01 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:36:04 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 
 # include "../ft_printf/includes/ft_printf.h"
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int	top;
 	int	size;
 	int	*array;
 }		t_stack;
-
 
 int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);

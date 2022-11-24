@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:20:42 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/24 11:33:50 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:36:52 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rrr(t_stack *a, t_stack *b)
 int	reverse_rotate(t_stack *stack)
 {
 	int	i;
-	int last;
+	int	last;
 
 	stack->size = stack_size(stack);
 	if (stack->size < 1)

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:50:32 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/24 11:18:03 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/24 11:36:41 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	ra(t_stack *a)
 {
 	if (rotate(a) == 1)
-		ft_printf("ra\n");	
+		ft_printf("ra\n");
 }
 
 void	rb(t_stack *b)
 {
 	if (rotate(b) == 1)
-		ft_printf("rb\n");	
+		ft_printf("rb\n");
 }
 
 void	rr(t_stack *a, t_stack *b)
