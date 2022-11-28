@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/24 11:35:22 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/28 21:03:01 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	main(int argc, char *argv[])
 	a = malloc(sizeof(t_stack *));
 	a->array = malloc(sizeof(int) * argc - 1);
 	b = malloc(sizeof(t_stack *));
-	b->array = malloc(sizeof(int) * argc -1);
+	b->array = malloc(sizeof(int) * argc - 1);
+	a->size = argc - 1;
+	b->size = argc - 1;
 	a->top = 0;
 	i = 0;
-	while (argv[i + 1]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
+	while (i < a->size) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
 	{
 		if (is_duplicate(a, ft_atoi(argv[i + 1])) || !(is_nbr(argv[i + 1])))
 			exit_error();
@@ -34,7 +36,7 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	i = a->top;
-	while (a->array[i])
+	while (i < a->size)
 	{
 		ft_printf("%d\n", a->array[i]);
 		i++;

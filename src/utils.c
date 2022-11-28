@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/23 18:40:49 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/28 21:04:13 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	stack_size(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (stack->array[stack->top + i])
+	while (stack->top + i < stack->size)
 		i++;
 	return (i);
 }
