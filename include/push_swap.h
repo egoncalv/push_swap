@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/29 18:08:07 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:19:29 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	ss(t_stack *a, t_stack *b);
 int		push(t_stack **from, t_stack **to);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
-/*
-int		rotate(t_stack *stack);
-void	ra(t_stack *a);
-void	rb(t_stack *b);
-void	rr(t_stack *a, t_stack *b);
 
+int		rotate(t_stack **stack);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+/*
 int		reverse_rotate(t_stack *stack);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);

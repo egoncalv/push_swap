@@ -6,11 +6,13 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:22:21 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/29 18:19:41 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:40:25 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+//Swap the first 2 elements at the top of stack.
 
 void	sa(t_stack *a)
 {
@@ -27,9 +29,10 @@ void	sb(t_stack *b)
 void	ss(t_stack *a, t_stack *b)
 {
 	if (!swap(a))
-		return ;
-	if (!swap(b))
-		return ;
+	{
+		if (!swap(b))
+			return ;
+	}
 	ft_printf("ss\n");
 }
 
