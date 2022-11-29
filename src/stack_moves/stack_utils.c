@@ -6,11 +6,11 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:11:18 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/29 17:47:07 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:38:25 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 t_stack	*newstack(int content)
 {
