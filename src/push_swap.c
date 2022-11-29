@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/29 21:36:21 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:40:32 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int	main(int argc, char *argv[])
 			exit_error();
 		stack_add_back(&a, newstack(ft_atoi(argv[i])));
 	}
+	print_stacks(a, b);
+	return (1);
+}
+
+void	print_stacks(t_stack *a, t_stack *b)
+{
 	ft_printf("\n--------------STACK A--------------\n");
 	while (a)
 	{
@@ -41,5 +47,4 @@ int	main(int argc, char *argv[])
 		ft_printf("%d\n", b->content);
 		b = b->next;
 	}
-	return (1);
 }
