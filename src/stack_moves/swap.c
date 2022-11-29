@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:22:21 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/23 19:12:15 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:19:41 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,21 @@ void	sb(t_stack *b)
 
 void	ss(t_stack *a, t_stack *b)
 {
-	if (swap(a) == 1 || swap(b) == 1)
-		ft_printf("ss\n");
+	if (!swap(a))
+		return ;
+	if (!swap(b))
+		return ;
+	ft_printf("ss\n");
 }
 
 int	swap(t_stack *stack)
 {
 	int	tmp;
 
-	if (stack_size(stack) < 2)
+	if (!stack || !stack->next)
 		return (0);
-	tmp = stack->array[stack->top];
-	stack->array[stack->top] = stack->array[stack->top + 1];
-	stack->array[stack->top + 1] = tmp;
+	tmp = stack->content;
+	stack->content = stack->next->content;
+	stack->next->content = tmp;
 	return (1);
 }
