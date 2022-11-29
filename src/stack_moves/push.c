@@ -6,12 +6,18 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:27:35 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/29 17:43:36 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:51:41 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
+/*
+		Take the first element at the top of stack "from"
+		and put it at the top of stack "to".
+		Note that my operations are done using pointer references,
+		so it impacts directly in the stack
+*/
 void	pa(t_stack **a, t_stack **b)
 {
 	if (push(b, a) == 1)
