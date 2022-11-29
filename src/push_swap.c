@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/29 15:17:40 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:48:18 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 int	main(int argc, char *argv[])
 {
 	t_stack	*a;
-	//t_stack	*b;
+	t_stack	*b;
 	int		i;
 
 	if (argc < 2)
 		return (1);
 	a = newstack(ft_atoi(argv[1]));
+	b = 0;
 	i = 1;
 	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
 	{
@@ -28,11 +29,17 @@ int	main(int argc, char *argv[])
 			exit_error();
 		stack_add_back(&a, newstack(ft_atoi(argv[i])));
 	}
-
+	ft_printf("\nSTACK A\n");
 	while (a)
 	{
 		ft_printf("%d\n", a->content);
 		a = a->next;
+	}
+	ft_printf("\nSTACK B\n");
+	while (b)
+	{
+		ft_printf("%d\n", b->content);
+		b = b->next;
 	}
 	return (1);
 }

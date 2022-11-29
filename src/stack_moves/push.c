@@ -6,41 +6,47 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:27:35 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/24 10:48:04 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:43:36 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_stack **a, t_stack **b)
 {
 	if (push(b, a) == 1)
 		ft_printf("pa\n");
 	return ;
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	pb(t_stack **a, t_stack **b)
 {
 	if (push(a, b) == 1)
 		ft_printf("pb\n");
 	return ;
 }
 
-int	push(t_stack *from, t_stack *to)
+int	push(t_stack **from, t_stack **to)
 {
-	int	tmp;
-	int	i;
+	t_stack	*tmp;
 
-	if (stack_size(from) < 1)
+	if (!(*from))
 		return (0);
-	i = 0;
-	while (to->array[i])
+	if (!(*to))
 	{
-		tmp = to->array[i];
-		i++;
-		to->array[i] = tmp;
+		(*to) = newstack((*from)->content);
+		tmp = *from;
+		*from = (*from)->next;
+		free(tmp);
 	}
-	to->array[0] = from->array[from->top];
-	from->top++;
+	else
+	{
+		(*to)->prev = newstack((*from)->content);
+		(*to)->prev->next = (*to);
+		*to = (*to)->prev;
+		tmp = *from;
+		*from = (*from)->next;
+		free(tmp);
+	}
 	return (1);
 }

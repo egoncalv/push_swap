@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:11:18 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/29 15:17:19 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:47:07 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_stack	*newstack(int content)
 	return (new);
 }
 
-
 void	stack_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
@@ -37,6 +36,7 @@ void	stack_add_back(t_stack **stack, t_stack *new)
 		else
 		{
 			last = stack_last(*(stack));
+			new->prev = last;
 			last->next = new;
 		}
 	}
@@ -54,6 +54,3 @@ t_stack	*stack_last(t_stack *stack)
 	}
 	return (stack);
 }
-
-
-
