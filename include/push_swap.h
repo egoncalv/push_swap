@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/28 21:02:05 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:17:10 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 
 typedef struct s_stack
 {
-	int	top;
-	int	size;
-	int	*array;
+	struct s_stack *prev;
+	int				content;
+	struct s_stack *next;
 }		t_stack;
+
+t_stack	*newstack(int content);
+void	stack_add_back(t_stack **stack, t_stack *new);
+t_stack	*stack_last(t_stack *stack);
 
 int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);

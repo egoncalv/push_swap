@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2022/11/24 11:21:50 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/11/29 15:17:02 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = push_swap
 
 SRC = 	src/push_swap.c \
 		src/utils.c \
+		src/stack_utils.c \
 		src/stack_moves/swap.c \
 		src/stack_moves/push.c \
 		src/stack_moves/rotate.c \

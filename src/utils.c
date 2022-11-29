@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/28 21:04:13 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:16:36 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 int	is_duplicate(t_stack *stack, int num)
 {
-	int	i;
-
-	i = 0;
-	while (stack->array[i])
-	{
-		if (num == stack->array[i])
+  while (stack)
+  {
+		if (stack->content == num)
 			return (1);
-		i++;
+		stack = stack->next;
 	}
 	return (0);
 }
-
+ 
 int	is_nbr(char	*argv)
 {
 	int	i;
