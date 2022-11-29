@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
+#    By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 01:22:21 by egoncalv          #+#    #+#              #
-#    Updated: 2022/11/11 01:17:44 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/03/30 15:23:12 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ $(NAME): $(OBJ)
 	@mv libft.a $(NAME)
 	@ar rcs $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	@echo "$(NAME) was created"
 
 %.o: %.c 
 	@gcc $(FLAG) -c $< -o $@
@@ -39,10 +40,18 @@ clean:
 	@rm -f $(OBJ)
 
 fclean: clean
-	@$(MAKE) -C libft/ fclean
+	@$(MAKE) -C libft/ clean
 	@rm -f $(NAME)
 	@rm -f a.out
+	@echo "$(NAME) removed"
 
 re: fclean $(NAME)
+
+test:
+	@gcc main.c libftprintf.a libft/libft.a
+
+retest: re test
+	@echo "\n\n\n"
+	@./a.out
 
 .PHONY: all clean fclean re bonus 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
+#    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2022/11/11 17:26:44 by erickbarros      ###   ########.fr        #
+#    Updated: 2022/11/29 15:17:02 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = push_swap
 
 SRC = 	src/push_swap.c \
 		src/utils.c \
-		src/ops_1.c
+		src/stack_utils.c \
 
 OBJ = $(SRC:.c=.o)
 
