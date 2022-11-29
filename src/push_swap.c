@@ -34,6 +34,5 @@ int	main(int argc, char *argv[])
 		ft_printf("%d\n", a->content);
 		a = a->next;
 	}
-
 	return (1);
 }

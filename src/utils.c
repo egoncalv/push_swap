@@ -12,17 +12,17 @@
 
 #include "../include/push_swap.h"
 
-int	is_duplicate(t_stack *lst, int num)
+int	is_duplicate(t_stack *stack, int num)
 {
-	while (lst)
-	{
-		if (lst->content == num)
+  while (stack)
+  {
+		if (stack->content == num)
 			return (1);
-		lst = lst->next;
+		stack = stack->next;
 	}
 	return (0);
 }
-
+ 
 int	is_nbr(char	*argv)
 {
 	int	i;
@@ -34,6 +34,16 @@ int	is_nbr(char	*argv)
 		if (argv[i] < 48 || argv[i] > 57)
 			return (0);
 	return (1);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack->top + i < stack->size)
+		i++;
+	return (i);
 }
 
 void	exit_error(void)

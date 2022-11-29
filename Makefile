@@ -10,13 +10,17 @@
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = push_swap
 
 SRC = 	src/push_swap.c \
 		src/utils.c \
 		src/stack_utils.c \
+		src/stack_moves/swap.c \
+		src/stack_moves/push.c \
+		src/stack_moves/rotate.c \
+		src/stack_moves/reverse_rotate.c \
 
 OBJ = $(SRC:.c=.o)
 

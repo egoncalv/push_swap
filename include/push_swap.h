@@ -26,9 +26,29 @@ t_stack	*newstack(int content);
 void	stack_add_back(t_stack **stack, t_stack *new);
 t_stack	*stack_last(t_stack *stack);
 
-int		is_duplicate(t_stack *lst, int num);
+int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);
+int		stack_size(t_stack *stack);
 
 void	exit_error(void);
+
+int		swap(t_stack *stack);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+
+int		push(t_stack *from, t_stack *to);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *a, t_stack *b);
+
+int		rotate(t_stack *stack);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+
+int		reverse_rotate(t_stack *stack);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 #endif
