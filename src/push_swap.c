@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/30 01:23:41 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 22:52:15 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,42 @@ int	main(int argc, char *argv[])
 	if (argc <= 6)
 		sort_small(&a, &b, argc);
 	print_stacks(a, b);
+	free_stacks(&a, &b);
 	return (1);
 }
 
 t_stack	*parse_stack(char **argv)
 {
-	int		i;
+	int			i;
 	t_stack	*stack;
 	
 	stack = newstack(ft_atoi(argv[1]));
 	i = 1;
 	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
-	{
+	{ 
 		if (is_duplicate(stack, ft_atoi(argv[i])) || !(is_nbr(argv[i])))
 			exit_error();
 		stack_add_back(&stack, newstack(ft_atoi(argv[i])));
 	}
 	return (stack);
+}
+
+void	free_stacks(t_stack **a, t_stack **b)
+{
+	t_stack *tmp;
+
+	while (*a)
+	{
+		tmp = (*a)->next;
+		free(*a);
+		*a = tmp;
+	}
+	while (*b)
+	{
+		tmp = (*b)->next;
+		free(*b);
+		*b = tmp;
+	}
 }
 
 void	print_stacks(t_stack *a, t_stack *b)
