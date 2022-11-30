@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 11:20:42 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/29 21:34:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 02:23:32 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	rrr(t_stack **a, t_stack **b)
 		if (!reverse_rotate(b))
 			return ;
 	}
-		ft_printf("rrr\n");
+	ft_printf("rrr\n");
 }
 
 int	reverse_rotate(t_stack **stack)
