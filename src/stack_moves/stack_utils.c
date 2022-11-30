@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:11:18 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/29 21:38:25 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 01:08:11 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_stack	*newstack(int content)
 void	stack_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
-
+ 
 	if (stack)
 	{
 		if (*stack == NULL)

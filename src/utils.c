@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/30 01:21:31 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 01:36:03 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,18 @@ void	exit_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(0);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	while (stack)
+	{
+		if (stack->next)
+		{
+			if (stack->content > stack->next->content)
+				return (0);
+		}
+		stack = stack->next;
+	}
+	return (1);
 }
