@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/29 21:40:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 01:22:06 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,29 @@ int	main(int argc, char *argv[])
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		i;
 
-	if (argc < 2)
+	if (argc < 3)
 		return (1);
-	a = newstack(ft_atoi(argv[1]));
+	a = parse_stack(argv);
 	b = 0;
+	print_stacks(a, b);
+	return (1);
+}
+
+t_stack	*parse_stack(char **argv)
+{
+	int		i;
+	t_stack	*stack;
+	
+	stack = newstack(ft_atoi(argv[1]));
 	i = 1;
 	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
 	{
-		if (is_duplicate(a, ft_atoi(argv[i])) || !(is_nbr(argv[i])))
+		if (is_duplicate(stack, ft_atoi(argv[i])) || !(is_nbr(argv[i])))
 			exit_error();
-		stack_add_back(&a, newstack(ft_atoi(argv[i])));
+		stack_add_back(&stack, newstack(ft_atoi(argv[i])));
 	}
-	print_stacks(a, b);
-	return (1);
+	return (stack);
 }
 
 void	print_stacks(t_stack *a, t_stack *b)
