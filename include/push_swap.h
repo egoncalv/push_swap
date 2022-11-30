@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/30 17:49:13 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:51:37 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	rrr(t_stack **a, t_stack **b);
 void	sort_small(t_stack **a, t_stack **b, int argc);
 void	sort_three(t_stack **a);
 
-
+void	sort(t_stack **a, t_stack **b);
 
 #endif
