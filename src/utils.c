@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/29 17:47:49 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 01:21:31 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_nbr(char	*argv)
 	int	i;
 
 	i = -1;
-	if (argv[0] == '-')
+	if (argv[0] == '-' || argv[0] == '+')
 		i++;
 	while (argv[++i])
 		if (argv[i] < 48 || argv[i] > 57)
