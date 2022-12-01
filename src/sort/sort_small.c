@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:24:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/01 15:43:26 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/01 17:09:03 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,18 +100,23 @@ void	insert_top(t_stack **a, t_stack **b, int i)
 void	insert_bottom(t_stack **a, t_stack **b, int i)
 {
 	int	rra_n;
+	int	ra_n;
 
-	rra_n = i - 1;
+	rra_n = stack_size(*a) - i;
+	if (stack_size(*a) == 4)
+		ra_n = i - 1;
+	else
+		ra_n = i;
 	while (rra_n > 0)
 	{
 		rra(a);
 		rra_n--;
 	}
 	pa(a, b);
-	while (i > 0)
+	while (ra_n > 0)
 	{
 		ra(a);
-		i--;
+		ra_n--;
 	}
 }
 
