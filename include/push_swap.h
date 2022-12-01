@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/11/30 17:51:37 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/01 01:11:05 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ typedef struct s_stack
 
 void	print_stacks(t_stack *a, t_stack *b);
 t_stack	*parse_stack(char **argv);
+void	free_stacks(t_stack **a, t_stack **b);
 
 t_stack	*newstack(int content);
 void	stack_add_back(t_stack **stack, t_stack *new);
 t_stack	*stack_last(t_stack *stack);
+int		stack_size(t_stack *stack);
 
 int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);
@@ -57,6 +59,12 @@ void	rrr(t_stack **a, t_stack **b);
 
 void	sort_small(t_stack **a, t_stack **b, int argc);
 void	sort_three(t_stack **a);
+void	sort_five(t_stack **a, t_stack **b);
+
+int		is_bigger(t_stack *a, int n);
+int		get_correct_pos(t_stack *stack, int n);
+void	insert_bottom(t_stack **a, t_stack **b, int i);
+void	insert_top(t_stack **a, t_stack **b, int i);
 
 void	sort(t_stack **a, t_stack **b);
 

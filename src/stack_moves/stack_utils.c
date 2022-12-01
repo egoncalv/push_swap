@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:11:18 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/11/30 02:23:51 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/11/30 19:01:20 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,17 @@ t_stack	*stack_last(t_stack *stack)
 		stack = stack->next;
 	}
 	return (stack);
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
 }
