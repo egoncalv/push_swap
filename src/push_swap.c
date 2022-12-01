@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/12/01 17:08:28 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/01 23:39:53 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	main(int argc, char *argv[])
 	a = parse_stack(argv);
 	b = 0;
 	if (argc <= 6)
-		sort_small(&a, &b, argc);
+		sort_small(&a, &b);
+	else if (argc <= 101)
+		sort_medium(&a, &b);
 	//print_stacks(a, b);
 	free_stacks(&a, &b);
 	return (1);

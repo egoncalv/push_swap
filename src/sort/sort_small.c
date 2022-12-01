@@ -6,24 +6,24 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:24:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/01 17:09:03 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/01 19:37:33 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	sort_small(t_stack **a, t_stack **b, int argc)
+void	sort_small(t_stack **a, t_stack **b)
 {
+	int	size;
+
+	size = stack_size(*a);
 	if (is_sorted(*a))
 		return ;
-	if (argc == 3)
-	{
+	else if (size == 2)
 		sa(*a);
-		return ;
-	}
-	if (argc == 4)
+	else if (size == 3)
 		sort_three(a);
-	if (argc == 5 || argc == 6)
+	else if (size == 4 || size == 5)
 		sort_five(a, b);
 }
 
