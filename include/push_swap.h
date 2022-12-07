@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/12/01 23:47:39 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/07 03:24:14 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ typedef struct s_stack
 	int				content;
 	struct s_stack *next;
 }		t_stack;
+
+typedef struct s_chunk
+{
+	int	chunk_1;
+	int	chunk_2;
+	int	chunk_3;
+	int	chunk_4;
+	int	chunk_5;
+}		t_chunk;
+
 
 void	print_stacks(t_stack *a, t_stack *b);
 t_stack	*parse_stack(char **argv);
@@ -62,6 +72,7 @@ void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
 
 void	sort_medium(t_stack **a, t_stack **b);
+void	send_less(t_stack **a, t_stack **b, int midpoint, int size);
 int		find_midpoint(t_stack *stack);
 int		*bubble_sort(int *array, int size);
 
@@ -69,7 +80,5 @@ int		is_bigger(t_stack *a, int n);
 int		get_correct_pos(t_stack *stack, int n);
 void	insert_bottom(t_stack **a, t_stack **b, int i);
 void	insert_top(t_stack **a, t_stack **b, int i);
-
-void	sort(t_stack **a, t_stack **b);
 
 #endif
