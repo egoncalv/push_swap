@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/07 03:32:23 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:56:28 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,7 @@ void	send_less(t_stack **a, t_stack **b, int midpoint, int size)
 	{
 		if (a_tmp->content < midpoint)
 		{
-			if (j < (stack_size(*a) / 2))
-			{
-				while (j)
-				{
-					ra(a);
-					j--;				
-				}
-			}
-			else
-			{
-				while (j < stack_size(*a))
-				{
-					rra(a);
-					j++;
-				}
-			}
+			reverse_i(a, j);
 			pb(a,b);
 			a_tmp = *a;
 		}
@@ -59,5 +44,25 @@ void	send_less(t_stack **a, t_stack **b, int midpoint, int size)
 			j++;
 		}	
 		i++;
+	}
+}
+
+void	reverse_i(t_stack **stack, int i)
+{
+	if (i < (stack_size(*stack) / 2))
+	{
+		while (i)
+		{
+			ra(stack);
+			i--;
+		}
+	}
+	else
+	{
+		while (i < stack_size(*stack))
+		{
+			rra(stack);
+			i++;
+		}
 	}
 }
