@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/12/05 17:01:29 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:12:39 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 t_stack	*parse_stack(char **argv)
 {
 	int			i;
-	t_stack	*stack;
+	t_stack		*stack;
 	
 	stack = newstack(ft_atoi(argv[1]));
 	i = 1;

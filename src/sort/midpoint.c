@@ -6,23 +6,21 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:52:51 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/07 03:01:17 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/21 19:20:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	find_midpoint(t_stack *stack)
+int	find_midpoint(t_stack *stack, int size)
 {
 	int	*array;
-	int	size;
 	int	i;
 	int	midpoint;
-	
-	size = stack_size(stack);
+
 	array = malloc(sizeof(int) * size);
 	i = 0;
-	while (stack)
+	while (i < size)
 	{
 		array[i] = stack->content;
 		stack = stack->next;
