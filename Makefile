@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2022/12/01 23:53:28 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/12/21 17:28:52 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRC = 	src/push_swap.c \
 		src/stack_moves/rotate.c \
 		src/stack_moves/reverse_rotate.c \
 		src/sort/sort_small.c \
+		src/sort/sort_small_utils.c \
 		src/sort/sort_medium.c \
+		src/sort/sort_medium_utils.c \
 		src/sort/midpoint.c \
 
 OBJ = $(SRC:.c=.o)

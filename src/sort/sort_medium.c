@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/21 19:56:33 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/26 12:29:05 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,15 @@ void	sort_medium(t_stack **a, t_stack **b)
 	while (stack_size(*a) > 2)
 	{
 		midpoint = find_midpoint(*a, stack_size(*a));
-		chunk_sizes[++i] = send_smaller(a, b, midpoint, stack_size(*a));
+		chunk_sizes[++i] = send_smaller(a, b, midpoint, stack_size(*a), 1);
 	}
 	sort_small(a, b);
-	//iterating through chunks in b, and calling functin that will sort and push them
-	i = 5;
+	i = 6;
 	while (i--)
 	{
 		if (chunk_sizes[i])
 			sort_chunk(a, b, chunk_sizes[i], 'b');
 	}
-	//if (!is_sorted((*a)))
-	//	sort_medium(a, b);
 }
 
 void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
@@ -44,6 +41,13 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 	int		tmp;
 
 	new_chunk_size = 0;
+	if (id == 'a' && is_sorted(*a, chunk_size))
+		return ;
+	else if (id == 'b' && is_sorted_descending(*b, chunk_size))
+	{
+		while (chunk_size-- > 0)
+			pa(a, b);
+	}
 	while (chunk_size > 0)
 	{
 		if (chunk_size <= 2)
@@ -54,7 +58,7 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 		else if (id == 'a')
 		{
 			midpoint = find_midpoint(*a, chunk_size);
-			tmp = send_smaller(a, b, midpoint, chunk_size);
+			tmp = send_smaller(a, b, midpoint, chunk_size, 0);
 		}
 		else if (id == 'b')
 		{
@@ -66,9 +70,9 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 	}
 	if (new_chunk_size > 0)
 	{
-		if (id == 'a')
+		if (id == 'a' && !is_sorted(*b, new_chunk_size))
 			sort_chunk(a, b, new_chunk_size, 'b');
-		else if (id == 'b')
+		else if (id == 'b' && !is_sorted(*a, new_chunk_size))
 			sort_chunk(a, b, new_chunk_size, 'a');
 	}
 }

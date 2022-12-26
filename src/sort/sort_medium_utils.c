@@ -6,13 +6,20 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/21 18:32:30 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/26 12:23:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	send_smaller(t_stack **a, t_stack **b, int midpoint, int size)
+// This function will go through (size) elements of
+// stack A and send all numbers bigger than midpoint
+// to the opposite stack B. If (last_chunk) is true, 
+// we rotate without restoring stack, because we only
+// have one chunk. Otherwise we always restore the stack
+// after pushing, so we do not lose track of chunk.
+
+int	send_smaller(t_stack **a, t_stack **b, int midpoint, int size, int last_chunk)
 {
 	t_stack	*a_tmp;
 	int		j;
@@ -25,8 +32,10 @@ int	send_smaller(t_stack **a, t_stack **b, int midpoint, int size)
 	{
 		if (a_tmp->content < midpoint)
 		{
-			check_and_rotate(a, j);
-			pb(a, b);
+			if (last_chunk)
+				rotate_push(a, b, j);
+			else
+				rotate_push_rotate(a, b, j, 'a');
 			j = 0;
 			a_tmp = *a;
 			chunk_size++;
@@ -41,6 +50,10 @@ int	send_smaller(t_stack **a, t_stack **b, int midpoint, int size)
 	return (chunk_size);
 }
 
+// This function will go through (size) elements of
+// stack B and send all numbers bigger than midpoint
+// to the opposite stack A
+
 int	send_bigger(t_stack **a, t_stack **b, int midpoint, int size)
 {
 	t_stack	*b_tmp;
@@ -54,7 +67,7 @@ int	send_bigger(t_stack **a, t_stack **b, int midpoint, int size)
 	{
 		if (b_tmp->content > midpoint)
 		{
-			rotate_push_rotate(a, b, j);
+			rotate_push_rotate(a, b, j, 'b');
 			b_tmp = *b;
 			j = 0;
 			chunk_size++;
@@ -69,34 +82,56 @@ int	send_bigger(t_stack **a, t_stack **b, int midpoint, int size)
 	return (chunk_size);
 }
 
-void	rotate_push_rotate(t_stack **a, t_stack **b, int i)
+// This function will rotate stack identified with (id) (i) times,
+// push from one stack to another and then will restore stack as it
+// was, so we don't lose track of chunks.
+
+void	rotate_push_rotate(t_stack **a, t_stack **b, int i, int id)
 {
 	int	j;
 
 	j = i;	
 	while (i--)
-		rb(b);
-	pa(a, b);
+	{
+		if (id == 'b')
+			rb(b);
+		if (id == 'a')
+			ra(a);
+	}
+	if (id == 'b')
+		pa(a, b);
+	if (id == 'a')
+		pb(a, b);
 	while (j--)
-		rrb(b);
+	{
+		if (id == 'b')
+			rrb(b);
+		else if (id == 'a')
+			rra(a);
+	}
 }
 
-void	check_and_rotate(t_stack **stack, int i)
+//This functions checks if the given index is closer to the start or end
+// of the stack A, deciding if it will rotate or reverse rotate. It then 
+//rotates and pushes the node to stack B
+
+void	rotate_push(t_stack **a, t_stack **b, int i)
 {
-	if (i < (stack_size(*stack) / 2))
+	if (i < (stack_size(*a) / 2))
 	{
 		while (i)
 		{
-			ra(stack);
+			ra(a);
 			i--;
 		}
 	}
 	else
 	{
-		while (i < stack_size(*stack))
+		while (i < stack_size(*a))
 		{
-			rra(stack);
+			rra(a);
 			i++;
 		}
 	}
+	pb(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/12/10 21:55:58 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/23 17:25:35 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ typedef struct s_stack
 	struct s_stack *next;
 }		t_stack;
 
-typedef struct s_chunk
-{
-	int	chunk_1;
-	int	chunk_2;
-	int	chunk_3;
-	int	chunk_4;
-	int	chunk_5;
-}		t_chunk;
-
 
 void	print_stacks(t_stack *a, t_stack *b);
 t_stack	*parse_stack(char **argv);
@@ -44,7 +35,8 @@ int		stack_size(t_stack *stack);
 int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);
 int		stack_size(t_stack *stack);
-int		is_sorted(t_stack *stack);
+int		is_sorted(t_stack *stack, int size);
+int		is_sorted_descending(t_stack *stack, int size);
 
 void	exit_error(void);
 
@@ -72,10 +64,17 @@ void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
 
 void	sort_medium(t_stack **a, t_stack **b);
-void	send_less(t_stack **a, t_stack **b, int midpoint, int size);
-void	reverse_i(t_stack **stack, int i);
-int		find_midpoint(t_stack *stack);
+void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id);
+int		send_smaller(t_stack **a, t_stack **b, int midpoint, int size, int last_chunk);
+int		send_bigger(t_stack **a, t_stack **b, int midpoint, int size);
+void	rotate_push(t_stack **a, t_stack **b, int i);
+void	rotate_push_rotate(t_stack **a, t_stack **b, int i, int id);
+int		find_midpoint(t_stack *stack, int size);
 int		*bubble_sort(int *array, int size);
+
+int		small_push(t_stack **a, t_stack **b, int chunk_size, char id);
+int		small_sort_a(t_stack **a, int chunk_size);
+int		small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size);
 
 int		is_bigger(t_stack *a, int n);
 int		get_correct_pos(t_stack *stack, int n);

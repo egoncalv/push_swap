@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:17:25 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/12/21 19:16:44 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/23 15:19:34 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,21 @@ int	is_sorted(t_stack *stack, int size)
 		if (stack->next)
 		{
 			if (stack->content > stack->next->content)
+				return (0);
+		}
+		stack = stack->next;
+		size--;
+	}
+	return (1);
+}
+
+int	is_sorted_descending(t_stack *stack, int size)
+{
+	while (size && stack)
+	{
+		if (stack->next)
+		{
+			if (stack->content < stack->next->content)
 				return (0);
 		}
 		stack = stack->next;
