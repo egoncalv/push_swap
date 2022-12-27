@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/26 12:23:21 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/27 00:09:11 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,35 @@
 // have one chunk. Otherwise we always restore the stack
 // after pushing, so we do not lose track of chunk.
 
-int	send_smaller(t_stack **a, t_stack **b, int midpoint, int size, int last_chunk)
+int	send_smaller(t_stack **a, t_stack **b, int midpoint, int size, int last)
 {
 	t_stack	*a_tmp;
-	int		j;
+	int		i;
+	int		tmp;
 	int		chunk_size;
 
-	j = 0;
+	i = 0;
 	a_tmp = (*a);
 	chunk_size = 0;
 	while (size > 0)
 	{
 		if (a_tmp->content < midpoint)
 		{
-			if (last_chunk)
-				rotate_push(a, b, j);
+			if (last)
+				tmp = rotate_push(a, b, i, 'a');
 			else
-				rotate_push_rotate(a, b, j, 'a');
-			j = 0;
+				tmp = rotate_push_rotate(a, b, midpoint, i, 'a');
+			chunk_size += tmp;
+			size -= tmp;
+			i = 0;
 			a_tmp = *a;
-			chunk_size++;
 		}
 		else
 		{
 			a_tmp = a_tmp->next;
-			j++;
-		}	
-		size--;
+			i++;
+			size--;
+		}
 	}
 	return (chunk_size);
 }
@@ -58,56 +60,86 @@ int	send_bigger(t_stack **a, t_stack **b, int midpoint, int size)
 {
 	t_stack	*b_tmp;
 	int		chunk_size;
-	int		j;
+	int		tmp;
+	int		i;
 
-	j = 0;
+	i = 0;
 	b_tmp = (*b);
 	chunk_size = 0;
+
+	int	last_chunk = 0;
+	if (size == stack_size(*b))
+		last_chunk = 1;
 	while (size > 0)
 	{
 		if (b_tmp->content > midpoint)
 		{
-			rotate_push_rotate(a, b, j, 'b');
+			if (last_chunk)
+				tmp = rotate_push(b, a, i, 'b');
+			else
+				tmp = rotate_push_rotate(b, a, midpoint, i, 'b');
+			chunk_size += tmp;
+			size -= tmp;
 			b_tmp = *b;
-			j = 0;
-			chunk_size++;
+			i = 0;
 		}
 		else
 		{
 			b_tmp = b_tmp->next;
-			j++;
+			size--;
+			i++;
 		}
-		size--;
 	}
 	return (chunk_size);
 }
 
-// This function will rotate stack identified with (id) (i) times,
-// push from one stack to another and then will restore stack as it
-// was, so we don't lose track of chunks.
-
-void	rotate_push_rotate(t_stack **a, t_stack **b, int i, int id)
+int	rotate_push_rotate(t_stack **from, t_stack **to, int midpoint, int i, char id)
 {
-	int	j;
+	int	chunk_size;
 
-	j = i;	
-	while (i--)
-	{
-		if (id == 'b')
-			rb(b);
-		if (id == 'a')
-			ra(a);
-	}
-	if (id == 'b')
-		pa(a, b);
+	chunk_size = 0;
+	rotate_i(from, i, id);
 	if (id == 'a')
-		pb(a, b);
-	while (j--)
 	{
-		if (id == 'b')
-			rrb(b);
-		else if (id == 'a')
-			rra(a);
+		while ((*from)->content < midpoint)
+		{
+			pb(from, to);
+			chunk_size++;
+		}
+	}
+	else if (id == 'b')
+	{
+		while ((*from)->content > midpoint)
+		{
+			pa(to, from);
+			chunk_size++;
+		}
+	}
+	reverse_rotate_i(from, i, id);
+	return (chunk_size);
+}
+
+void	rotate_i(t_stack **stack, int i, char id)
+{
+	while (i)
+	{
+		if (id == 'a')
+			ra(stack);
+		else if (id == 'b')
+			rb(stack);
+		i--;
+	}
+}
+
+void reverse_rotate_i(t_stack **stack, int i, char id)
+{
+	while (i)
+	{
+		if (id == 'a')
+			rra(stack);
+		else if (id == 'b')
+			rrb(stack);
+		i--;
 	}
 }
 
@@ -115,23 +147,18 @@ void	rotate_push_rotate(t_stack **a, t_stack **b, int i, int id)
 // of the stack A, deciding if it will rotate or reverse rotate. It then 
 //rotates and pushes the node to stack B
 
-void	rotate_push(t_stack **a, t_stack **b, int i)
+int	rotate_push(t_stack **from, t_stack **to, int i, char id)
 {
-	if (i < (stack_size(*a) / 2))
-	{
-		while (i)
-		{
-			ra(a);
-			i--;
-		}
-	}
+	int size;
+
+	size = stack_size(*(from));
+	if (i < (size / 2))
+		rotate_i(from, i, id);
 	else
-	{
-		while (i < stack_size(*a))
-		{
-			rra(a);
-			i++;
-		}
-	}
-	pb(a, b);
+		reverse_rotate_i(from, size - i, id);
+	if (id == 'a')
+		pb(from, to);
+	else if (id == 'b')
+		pa(to, from);
+	return (1);
 }

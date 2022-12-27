@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/26 12:29:05 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/26 23:55:09 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,14 @@ void	sort_medium(t_stack **a, t_stack **b)
 	while (i--)
 	{
 		if (chunk_sizes[i])
-			sort_chunk(a, b, chunk_sizes[i], 'b');
+		{
+			if (i == 0)
+				sort_chunk(a, b, chunk_sizes[i], 'b');
+			else
+				sort_chunk(a, b, chunk_sizes[i], 'b');
+		}
 	}
+	free(chunk_sizes);
 }
 
 void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
@@ -41,13 +47,6 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 	int		tmp;
 
 	new_chunk_size = 0;
-	if (id == 'a' && is_sorted(*a, chunk_size))
-		return ;
-	else if (id == 'b' && is_sorted_descending(*b, chunk_size))
-	{
-		while (chunk_size-- > 0)
-			pa(a, b);
-	}
 	while (chunk_size > 0)
 	{
 		if (chunk_size <= 2)
