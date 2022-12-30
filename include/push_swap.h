@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/12/26 23:54:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/12/30 03:18:31 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct s_stack
 	struct s_stack *next;
 }		t_stack;
 
+typedef struct s_mid
+{
+	int	midpoint;
+	int	qty_bigger;
+	int	qty_smaller;
+}		t_mid;
 
 void	print_stacks(t_stack *a, t_stack *b);
 t_stack	*parse_stack(char **argv);
@@ -65,13 +71,11 @@ void	sort_five(t_stack **a, t_stack **b);
 
 void	sort_medium(t_stack **a, t_stack **b);
 void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id);
-int		send_smaller(t_stack **a, t_stack **b, int midpoint, int size, int last);
-int		send_bigger(t_stack **a, t_stack **b, int midpoint, int size);
-int		rotate_push(t_stack **from, t_stack **to, int i, char id);
-int		rotate_push_rotate(t_stack **from, t_stack **to, int midpoint, int i, char id);
+int		send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last);
+int		send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size);
 void	rotate_i(t_stack **stack, int i, char id);
 void 	reverse_rotate_i(t_stack **stack, int i, char id);
-int		find_midpoint(t_stack *stack, int size);
+int		find_midpoint(t_stack *stack, int size, t_mid *mid);
 int		*bubble_sort(int *array, int size);
 int		is_last_chunk(int stack_size, int chunk_size);
 
