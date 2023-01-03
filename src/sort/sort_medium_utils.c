@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/30 03:06:29 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:11:14 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,43 +21,28 @@
 
 int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last)
 {
-	t_stack	*a_tmp;
-	int		i;
 	int		j;
 	int		chunk_size;
 
-	i = 0;
 	j = 0;
-	a_tmp = (*a);
 	chunk_size = 0;
-	while (size > 0)
+	while (chunk_size < mid->qty_smaller && size)
 	{
-		if (a_tmp->content < mid->midpoint)
+		if ((*a)->content < mid->midpoint)
 		{
-			j += i;
-			rotate_i(a, i, 'a');
-			while ((*a)->content < mid->midpoint)
-			{
-				chunk_size++;
-				size--;
-				pb(a, b);
-			}
-			a_tmp = *a;
-			i = 0;
+			pb(a, b);
+			if (stack_size(*b) >= 2 && (*b)->content < (*b)->next->content)
+				sb(*b);
+			chunk_size++;
 		}
 		else if (stack_last(*a)->content < mid->midpoint)
-		{
-			chunk_size++;
-			size--;
 			rra(a);
-			pb(a, b);
-		}
 		else
 		{
-			a_tmp = a_tmp->next;
-			i++;
-			size--;
+			ra(a);
+			j++;
 		}
+		size--;
 	}
 	if (!last)
 		reverse_rotate_i(a, j, 'a');
@@ -70,44 +55,28 @@ int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last)
 
 int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size)
 {
-	t_stack	*b_tmp;
 	int		chunk_size;
-	int		i;
 	int		j;
 	
-	i = 0;
-	b_tmp = (*b);
 	chunk_size = 0;
-
 	j = 0;
-	int last = 0;
-
-	if (stack_size(*b) == size)
-	 	last = 1;
-	while (size > 0)
+	while (chunk_size < mid->qty_bigger && size)
 	{
-		if (b_tmp->content > mid->midpoint)
+		if ((*b)->content > mid->midpoint)
 		{
-				j += i;
-				rotate_i(b, i, 'b');
-				while ((*b)->content > mid->midpoint)
-				{
-					chunk_size++;
-					size--;
-					pa(a, b);
-				}
-			b_tmp = *b;
-			i = 0;
+			pa(a, b);
+			if ((*a)->content > (*a)->next->content)
+			 	sa(*a);
+			chunk_size++;
 		}
 		else
 		{
-			b_tmp = b_tmp->next;
-			size--;
-			i++;
+			rb(b);
+			j++;
 		}
+		size--;
 	}
-	if (!last)
-		reverse_rotate_i(b, j, 'b');
+	reverse_rotate_i(b, j, 'b');
 	return (chunk_size);
 }
 

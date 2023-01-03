@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:52:51 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/30 03:23:56 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/02 09:53:39 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	find_midpoint(t_stack *stack, int size, t_mid *mid)
 	int	i;
 
 	array = malloc(sizeof(int) * size);
+	mid->qty_bigger = 0;
+	mid->qty_smaller = 0;
 	i = 0;
 	while (i < size)
 	{
@@ -31,7 +33,9 @@ int	find_midpoint(t_stack *stack, int size, t_mid *mid)
 	while (i < size)
 	{
 		if (array[i] < mid->midpoint)
+		{
 			mid->qty_smaller++;
+		}
 		else if (array[i] > mid->midpoint)
 			mid->qty_bigger++;
 		i++;

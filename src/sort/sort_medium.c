@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/30 03:27:01 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/03 10:08:33 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_medium(t_stack **a, t_stack **b)
 	int		i;
 
 	mid = malloc(sizeof(t_mid *));
-	chunk_sizes = malloc(sizeof(int) * 5);
+	chunk_sizes = malloc(sizeof(int) * 12);
 	i = -1;
 	while (stack_size(*a) > 2)
 	{
@@ -29,8 +29,9 @@ void	sort_medium(t_stack **a, t_stack **b)
 	sort_small(a, b);
 	while (i >= 0)
 	{
-		sort_chunk(a, b, chunk_sizes[i], 'b');
-		i--;
+		if (chunk_sizes[i])
+			sort_chunk(a, b, chunk_sizes[i], 'b');
+	 	i--;
 	}
 	free(chunk_sizes);
 	free(mid);
@@ -44,14 +45,27 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 
 	new_chunk_size = 0;
 	mid = malloc(sizeof(t_mid *));
-	while (chunk_size > 0)
+	while (chunk_size)
 	{
 		if (id == 'a' && is_sorted(*a, chunk_size))
 			break ;
-		if (id == 'b' && is_sorted_descending(*b, chunk_size))
-			sort_chunk(a, b, new_chunk_size, 'a'); 
-		if (chunk_size <= 2)
+		else if (id == 'b' && is_sorted_descending(*b, chunk_size))
+		{
+			while (chunk_size)
+			{
+				pa(a, b);
+				new_chunk_size++;
+				chunk_size--;
+			}
+			sort_chunk(a, b, new_chunk_size, 'a');
+			return ;
+		}
+		else if (chunk_size <= 2)
+		{
 			tmp = small_push(a, b, chunk_size, id);
+			if (id == 'a')
+				break ;
+		}
 		else if (id == 'a')
 		{
 			find_midpoint(*a, chunk_size, mid);
@@ -65,7 +79,7 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 		chunk_size -= tmp;
 		new_chunk_size += tmp;
 	}
-	if (new_chunk_size > 0)
+	if (new_chunk_size)
 	{
 		if (id == 'a' && !is_sorted(*b, new_chunk_size))
 			sort_chunk(a, b, new_chunk_size, 'b');
@@ -90,13 +104,12 @@ int	small_sort_a(t_stack **a, int chunk_size)
 	{
 		if ((*a)->content > (*a)->next->content)
 			sa(*a);
-		return (0);
+		return (-2);
 	}
 	if (chunk_size == 1)
 		return (0);
 	return (chunk_size);
 }
-
 
 int	small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size)
 {
