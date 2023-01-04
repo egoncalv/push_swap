@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/03 10:08:33 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:28:22 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ void	sort_medium(t_stack **a, t_stack **b)
 	while (i >= 0)
 	{
 		if (chunk_sizes[i])
-			sort_chunk(a, b, chunk_sizes[i], 'b');
+			sort_chunk_b(a, b, chunk_sizes[i]);
 	 	i--;
 	}
+	if (!(is_sorted(*a, stack_size(*a))))
+		sort_medium(a, b);
 	free(chunk_sizes);
 	free(mid);
 }
 
-void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
+void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size)
 {
 	t_mid	*mid;
 	int		new_chunk_size;
@@ -47,55 +49,50 @@ void	sort_chunk(t_stack **a, t_stack **b, int chunk_size, char id)
 	mid = malloc(sizeof(t_mid *));
 	while (chunk_size)
 	{
-		if (id == 'a' && is_sorted(*a, chunk_size))
+		if (is_sorted(*a, chunk_size))
 			break ;
-		else if (id == 'b' && is_sorted_descending(*b, chunk_size))
-		{
-			while (chunk_size)
-			{
-				pa(a, b);
-				new_chunk_size++;
-				chunk_size--;
-			}
-			sort_chunk(a, b, new_chunk_size, 'a');
-			return ;
-		}
 		else if (chunk_size <= 2)
 		{
-			tmp = small_push(a, b, chunk_size, id);
-			if (id == 'a')
+			tmp = small_sort_a(a, chunk_size);
+			if (new_chunk_size)
 				break ;
 		}
-		else if (id == 'a')
+		else
 		{
 			find_midpoint(*a, chunk_size, mid);
 			tmp = send_smaller(a, b, mid, chunk_size, 0);
 		}
-		else if (id == 'b')
+		chunk_size -= tmp;
+		new_chunk_size += tmp;
+	}
+	if (new_chunk_size)
+		sort_chunk_b(a, b, new_chunk_size);
+	free(mid);
+}
+
+void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size)
+{
+	t_mid	*mid;
+	int		new_chunk_size;
+	int		tmp;
+
+	new_chunk_size = 0;
+	mid = malloc(sizeof(t_mid *));
+	while (chunk_size)
+	{
+		if (chunk_size <= 2)
+			tmp = small_push_b_to_a(a, b, chunk_size);
+		else
 		{
 			find_midpoint(*b, chunk_size, mid);
 			tmp = send_bigger(a, b, mid, chunk_size);
 		}
 		chunk_size -= tmp;
 		new_chunk_size += tmp;
-	}
-	if (new_chunk_size)
-	{
-		if (id == 'a' && !is_sorted(*b, new_chunk_size))
-			sort_chunk(a, b, new_chunk_size, 'b');
-		else if (id == 'b' && !is_sorted(*a, new_chunk_size))
-			sort_chunk(a, b, new_chunk_size, 'a');
+		if (new_chunk_size)
+		 		sort_chunk_a(a, b, new_chunk_size);
 	}
 	free(mid);
-}
-
-int	small_push(t_stack **a, t_stack **b, int chunk_size, char id)
-{
-	if (id == 'a')
-		return (small_sort_a(a, chunk_size));
-	else if (id == 'b')
-		return (small_push_b_to_a(a, b, chunk_size));
-	return (chunk_size);
 }
 
 int	small_sort_a(t_stack **a, int chunk_size)
@@ -104,7 +101,7 @@ int	small_sort_a(t_stack **a, int chunk_size)
 	{
 		if ((*a)->content > (*a)->next->content)
 			sa(*a);
-		return (-2);
+		return (0);
 	}
 	if (chunk_size == 1)
 		return (0);
