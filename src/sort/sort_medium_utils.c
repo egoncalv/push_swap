@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/04 10:14:09 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:48:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,13 @@ int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size)
 {
 	int		chunk_size;
 	int		j;
+	int		last;
 	
 	chunk_size = 0;
 	j = 0;
+	last = 0;
+	if (size == stack_size(*b))
+		last = 1;
 	while (chunk_size < mid->qty_bigger && size)
 	{
 		if ((*b)->content > mid->midpoint)
@@ -76,20 +80,9 @@ int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size)
 		}
 		size--;
 	}
-	reverse_rotate_i(b, j, 'b');
+	if (!last)
+		reverse_rotate_i(b, j, 'b');
 	return (chunk_size);
-}
-
-void	rotate_i(t_stack **stack, int i, char id)
-{
-	while (i)
-	{
-		if (id == 'a')
-			ra(stack);
-		else if (id == 'b')
-			rb(stack);
-		i--;
-	}
 }
 
 void reverse_rotate_i(t_stack **stack, int i, char id)

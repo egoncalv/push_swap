@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/04 10:28:22 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:38:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	sort_medium(t_stack **a, t_stack **b)
 	 	i--;
 	}
 	if (!(is_sorted(*a, stack_size(*a))))
-		sort_medium(a, b);
+	 	sort_medium(a, b);
 	free(chunk_sizes);
 	free(mid);
 }
@@ -52,18 +52,14 @@ void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size)
 		if (is_sorted(*a, chunk_size))
 			break ;
 		else if (chunk_size <= 2)
-		{
-			tmp = small_sort_a(a, chunk_size);
-			if (new_chunk_size)
-				break ;
-		}
+			small_sort_a(a, chunk_size);
 		else
 		{
 			find_midpoint(*a, chunk_size, mid);
 			tmp = send_smaller(a, b, mid, chunk_size, 0);
+			chunk_size -= tmp;
+			new_chunk_size += tmp;
 		}
-		chunk_size -= tmp;
-		new_chunk_size += tmp;
 	}
 	if (new_chunk_size)
 		sort_chunk_b(a, b, new_chunk_size);
@@ -101,10 +97,10 @@ int	small_sort_a(t_stack **a, int chunk_size)
 	{
 		if ((*a)->content > (*a)->next->content)
 			sa(*a);
-		return (0);
+		return (2);
 	}
 	if (chunk_size == 1)
-		return (0);
+		return (1);
 	return (chunk_size);
 }
 

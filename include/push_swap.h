@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/04 10:19:21 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/04 10:43:16 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		stack_size(t_stack *stack);
 
 int		is_duplicate(t_stack *stack, int num);
 int		is_nbr(char	*argv);
-int		stack_size(t_stack *stack);
+
 int		is_sorted(t_stack *stack, int size);
 int		is_sorted_descending(t_stack *stack, int size);
 
@@ -70,22 +70,19 @@ void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
 
 void	sort_medium(t_stack **a, t_stack **b);
+
 void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size);
 void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size);
+
 int		send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last);
 int		send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size);
-void	rotate_i(t_stack **stack, int i, char id);
+
 void 	reverse_rotate_i(t_stack **stack, int i, char id);
+
 int		find_midpoint(t_stack *stack, int size, t_mid *mid);
 int		*bubble_sort(int *array, int size);
-int		is_last_chunk(int stack_size, int chunk_size);
 
 int		small_sort_a(t_stack **a, int chunk_size);
 int		small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size);
-
-int		is_bigger(t_stack *a, int n);
-int		get_correct_pos(t_stack *stack, int n);
-void	insert_bottom(t_stack **a, t_stack **b, int i);
-void	insert_top(t_stack **a, t_stack **b, int i);
 
 #endif
