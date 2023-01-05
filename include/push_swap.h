@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/05 08:05:55 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:01:08 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void	rrr(t_stack **a, t_stack **b);
 void	sort_small(t_stack **a, t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
+
+int		get_correct_pos(t_stack *stack, int n);
+int		is_bigger(t_stack *a, int n);
+void	insert_top(t_stack **a, t_stack **b, int i);
+void	insert_bottom(t_stack **a, t_stack **b, int i);
 
 void	sort_medium(t_stack **a, t_stack **b);
 

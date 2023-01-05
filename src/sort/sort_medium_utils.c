@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/04 18:53:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:07:43 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last)
 				sb(*b);
 			chunk_size++;
 		}
-		else if (stack_last(*a)->content < mid->midpoint)
-			rra(a);
+		else if (!last && stack_last(*a)->content < mid->midpoint)
+		 	rra(a);
 		else
 		{
 			ra(a);
