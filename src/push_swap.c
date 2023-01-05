@@ -6,18 +6,18 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/03 11:16:31 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:33:34 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
 
-	if (argc < 3)
+	if (argc < 2)
 		return (1);
 	a = parse_stack(argv);
 	b = 0;
@@ -32,15 +32,24 @@ int	main(int argc, char *argv[])
 t_stack	*parse_stack(char **argv)
 {
 	int			i;
+	int			j;
+	char		**arg;
 	t_stack		*stack;
 	
-	stack = newstack(ft_atoi(argv[1]));
-	i = 1;
+	i = 0;
+	stack = 0;
 	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
-	{ 
-		if (is_duplicate(stack, ft_atoi(argv[i])) || !(is_nbr(argv[i])))
-			exit_error();
-		stack_add_back(&stack, newstack(ft_atoi(argv[i])));
+	{
+		arg = ft_split(argv[i], ' ');
+		j = 0;
+		while (arg[j])
+		{
+			if (is_duplicate(stack, ft_atoi(arg[j])) || !(is_nbr(arg[j])))
+				exit_error();
+			stack_add_back(&stack, newstack(ft_atoi(arg[j])));
+			j++;
+		}
+		free(arg);
 	}
 	return (stack);
 }

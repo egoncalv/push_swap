@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/04 10:38:21 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/05 10:31:24 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 void	sort_medium(t_stack **a, t_stack **b)
 {
 	t_mid	*mid;
-	int		*chunk_sizes;
+	int		chunk_sizes[25];
 	int		i;
 
+	if (is_sorted(*a, stack_size(*a)))
+		return ;
 	mid = malloc(sizeof(t_mid *));
-	chunk_sizes = malloc(sizeof(int) * 12);
 	i = -1;
 	while (stack_size(*a) > 2)
 	{
@@ -35,7 +36,6 @@ void	sort_medium(t_stack **a, t_stack **b)
 	}
 	if (!(is_sorted(*a, stack_size(*a))))
 	 	sort_medium(a, b);
-	free(chunk_sizes);
 	free(mid);
 }
 
@@ -51,8 +51,11 @@ void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size)
 	{
 		if (is_sorted(*a, chunk_size))
 			break ;
-		else if (chunk_size <= 2)
-			small_sort_a(a, chunk_size);
+		else if (chunk_size == 2)
+		{
+			sa(*a);
+			break ;
+		}
 		else
 		{
 			find_midpoint(*a, chunk_size, mid);
@@ -89,19 +92,6 @@ void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size)
 		 		sort_chunk_a(a, b, new_chunk_size);
 	}
 	free(mid);
-}
-
-int	small_sort_a(t_stack **a, int chunk_size)
-{
-	if (chunk_size == 2)
-	{
-		if ((*a)->content > (*a)->next->content)
-			sa(*a);
-		return (2);
-	}
-	if (chunk_size == 1)
-		return (1);
-	return (chunk_size);
 }
 
 int	small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size)

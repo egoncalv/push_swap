@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/04 10:43:16 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/05 08:05:55 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	sort_medium(t_stack **a, t_stack **b);
 void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size);
 void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size);
 
+int		small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size);
 int		send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last);
 int		send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size);
 
@@ -82,7 +83,5 @@ void 	reverse_rotate_i(t_stack **stack, int i, char id);
 int		find_midpoint(t_stack *stack, int size, t_mid *mid);
 int		*bubble_sort(int *array, int size);
 
-int		small_sort_a(t_stack **a, int chunk_size);
-int		small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size);
 
 #endif
