@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/05 10:31:24 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:22:17 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size)
 		}
 		chunk_size -= tmp;
 		new_chunk_size += tmp;
+		if (is_sorted(*a, new_chunk_size))
+			new_chunk_size = 0;
 		if (new_chunk_size)
 		 		sort_chunk_a(a, b, new_chunk_size);
 	}
