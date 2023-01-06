@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/05 16:07:43 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/06 09:31:44 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 // have one chunk. Otherwise we always restore the stack
 // after pushing, so we do not lose track of chunk.
 
-int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last)
+int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int last)
 {
 	int		j;
 	int		chunk_size;
 
 	j = 0;
 	chunk_size = 0;
-	while (chunk_size < mid->qty_smaller && size)
+	while (chunk_size < mid->qty_smaller)
 	{
 		if ((*a)->content < mid->midpoint)
 		{
@@ -36,13 +36,12 @@ int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last)
 			chunk_size++;
 		}
 		else if (!last && stack_last(*a)->content < mid->midpoint)
-		 	rra(a);
+			rra(a);
 		else
 		{
 			ra(a);
 			j++;
 		}
-		size--;
 	}
 	if (!last)
 		reverse_rotate_i(a, j, 'a');
@@ -53,24 +52,20 @@ int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last)
 // stack B and send all numbers bigger than midpoint
 // to the opposite stack A
 
-int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size)
+int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int last)
 {
 	int		chunk_size;
 	int		j;
-	int		last;
-	
+
 	chunk_size = 0;
 	j = 0;
-	last = 0;
-	if (size == stack_size(*b))
-		last = 1;
-	while (chunk_size < mid->qty_bigger && size)
+	while (chunk_size < mid->qty_bigger)
 	{
 		if ((*b)->content > mid->midpoint)
 		{
 			pa(a, b);
 			if ((*a)->content > (*a)->next->content)
-			 	sa(*a);
+				sa(*a);
 			chunk_size++;
 		}
 		else
@@ -78,14 +73,13 @@ int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size)
 			rb(b);
 			j++;
 		}
-		size--;
 	}
 	if (!last)
 		reverse_rotate_i(b, j, 'b');
 	return (chunk_size);
 }
 
-void reverse_rotate_i(t_stack **stack, int i, char id)
+void	reverse_rotate_i(t_stack **stack, int i, char id)
 {
 	while (i)
 	{
@@ -95,4 +89,12 @@ void reverse_rotate_i(t_stack **stack, int i, char id)
 			rrb(stack);
 		i--;
 	}
+}
+
+int	is_last(t_stack *stack, int size)
+{
+	if (stack_size(stack) == size)
+		return (1);
+	else
+		return (0);
 }

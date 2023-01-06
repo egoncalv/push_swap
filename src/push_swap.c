@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/05 10:33:34 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/06 08:49:12 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ t_stack	*parse_stack(char **argv)
 	int			j;
 	char		**arg;
 	t_stack		*stack;
-	
+
 	i = 0;
 	stack = 0;
-	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
+	while (argv[++i])
 	{
 		arg = ft_split(argv[i], ' ');
 		j = 0;
@@ -56,7 +56,7 @@ t_stack	*parse_stack(char **argv)
 
 void	free_stacks(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (*a)
 	{
