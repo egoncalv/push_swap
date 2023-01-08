@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:54:51 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/10 23:58:20 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/06 08:50:05 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	get_correct_pos(t_stack *stack, int n)
 	return (0);
 }
 
-int		is_bigger(t_stack *a, int n)
+int	is_bigger(t_stack *a, int n)
 {
 	while (a)
 	{

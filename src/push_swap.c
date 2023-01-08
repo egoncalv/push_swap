@@ -6,7 +6,11 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/01/08 14:40:04 by egoncalv         ###   ########.fr       */
+=======
+/*   Updated: 2023/01/06 08:49:12 by egoncalv         ###   ########.fr       */
+>>>>>>> 6ed8a538e1abf2a3420d75927a40c01a93ae4696
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +40,7 @@ t_stack	*parse_stack(char **argv)
 	int			j;
 	char		**arg;
 	t_stack		*stack;
-	
+
 	i = 0;
 	stack = 0;
 	while (argv[++i])
@@ -60,7 +64,7 @@ t_stack	*parse_stack(char **argv)
 
 void	free_stack(t_stack *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (stack)
 	{

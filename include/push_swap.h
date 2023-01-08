@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/08 14:39:45 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:51:47 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct s_stack
 {
-	struct s_stack *prev;
+	struct s_stack	*prev;
 	int				content;
-	struct s_stack *next;
+	struct s_stack	*next;
 }		t_stack;
 
 typedef struct s_mid
@@ -81,13 +81,13 @@ void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size);
 void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size);
 
 int		small_push_b_to_a(t_stack **a, t_stack **b, int chunk_size);
-int		send_smaller(t_stack **a, t_stack **b, t_mid *mid, int size, int last);
-int		send_bigger(t_stack **a, t_stack **b, t_mid *mid, int size);
+int		send_smaller(t_stack **a, t_stack **b, t_mid *mid, int last);
+int		send_bigger(t_stack **a, t_stack **b, t_mid *mid, int last);
 
-void 	reverse_rotate_i(t_stack **stack, int i, char id);
+void	reverse_rotate_i(t_stack **stack, int i, char id);
+int		is_last(t_stack *stack, int size);
 
 int		find_midpoint(t_stack *stack, int size, t_mid *mid);
 int		*bubble_sort(int *array, int size);
-
 
 #endif

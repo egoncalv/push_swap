@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:11:18 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/05 10:17:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/06 08:49:46 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	stack_add_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
-		if (*stack == NULL)
-			*stack = new;
-		else
-		{
-			last = stack_last(*(stack));
-			new->prev = last;
-			last->next = new;
-		}
+	if (*stack == NULL)
+		*stack = new;
+	else
+	{
+		last = stack_last(*(stack));
+		new->prev = last;
+		last->next = new;
+	}
 }
 
 t_stack	*stack_last(t_stack *stack)
