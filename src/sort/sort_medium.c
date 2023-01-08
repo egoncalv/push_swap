@@ -6,11 +6,20 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/08 15:49:56 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:03:52 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+// This algorithm will divide Stack A by sending all numbers
+// below midpoint (the number in the mid of the sorted stack)
+// to stack B. It then calls the function sort_chunk, that will
+// do the same but from B to A, and sending bigger numbers instead
+// of smaller for each chunk.
+// Chunks are always divided in half and sent to opposite
+// stack using midpoint algorithm, until all
+// numbers are sorted in Stack A.
 
 void	sort_medium(t_stack **a, t_stack **b)
 {

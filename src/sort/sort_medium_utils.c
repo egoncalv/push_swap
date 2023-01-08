@@ -6,16 +6,16 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:56:06 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/08 15:30:55 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:04:24 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-// This function will go through (size) elements of
+// This function will go through the elements of
 // stack A and send all numbers bigger than midpoint
 // to the opposite stack B. If (last_chunk) is true, 
-// we rotate without restoring stack, because we only
+// we don't restore the stack, because we only
 // have one chunk. Otherwise we always restore the stack
 // after pushing, so we do not lose track of chunk.
 
@@ -48,9 +48,7 @@ int	send_smaller(t_stack **a, t_stack **b, t_mid *mid, int last)
 	return (chunk_size);
 }
 
-// This function will go through (size) elements of
-// stack B and send all numbers bigger than midpoint
-// to the opposite stack A
+// Same than send_small, but sends bigger numbers from B to A
 
 int	send_bigger(t_stack **a, t_stack **b, t_mid *mid, int last)
 {
