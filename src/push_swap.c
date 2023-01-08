@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/05 10:33:34 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:40:04 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 		sort_small(&a, &b);
 	else
 		sort_medium(&a, &b);
-	free_stacks(&a, &b);
+	free_stack(a);
+	free_stack(b);
 	return (1);
 }
 
@@ -38,52 +39,43 @@ t_stack	*parse_stack(char **argv)
 	
 	i = 0;
 	stack = 0;
-	while (argv[++i]) //Check for duplicates, ensure all arguments are integers, and are not bigger than MAX_INT
+	while (argv[++i])
 	{
 		arg = ft_split(argv[i], ' ');
-		j = 0;
-		while (arg[j])
+		j = -1;
+		while (arg[++j])
 		{
 			if (is_duplicate(stack, ft_atoi(arg[j])) || !(is_nbr(arg[j])))
+			{
+				free_2d_array(arg);
+				free_stack(stack);
 				exit_error();
+			}
 			stack_add_back(&stack, newstack(ft_atoi(arg[j])));
-			j++;
 		}
-		free(arg);
+		free_2d_array(arg);
 	}
 	return (stack);
 }
 
-void	free_stacks(t_stack **a, t_stack **b)
+void	free_stack(t_stack *stack)
 {
 	t_stack *tmp;
 
-	while (*a)
+	while (stack)
 	{
-		tmp = (*a)->next;
-		free(*a);
-		*a = tmp;
-	}
-	while (*b)
-	{
-		tmp = (*b)->next;
-		free(*b);
-		*b = tmp;
+		tmp = stack->next;
+		free (stack);
+		stack = tmp;
 	}
 }
 
-void	print_stacks(t_stack *a, t_stack *b)
+void	free_2d_array(char **array)
 {
-	ft_printf("\n--------------STACK A--------------\n");
-	while (a)
-	{
-		ft_printf("%d\n", a->content);
-		a = a->next;
-	}
-	ft_printf("\n--------------STACK B--------------\n");
-	while (b)
-	{
-		ft_printf("%d\n", b->content);
-		b = b->next;
-	}
+	int	i;
+
+	i = -1;
+	while (array[++i])
+		free(array[i]);
+	free (array);
 }

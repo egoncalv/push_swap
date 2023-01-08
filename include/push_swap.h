@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/05 16:01:08 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:39:45 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_mid
 
 void	print_stacks(t_stack *a, t_stack *b);
 t_stack	*parse_stack(char **argv);
-void	free_stacks(t_stack **a, t_stack **b);
+void	free_stack(t_stack *stack);
+void	free_2d_array(char **array);
 
 t_stack	*newstack(int content);
 void	stack_add_back(t_stack **stack, t_stack *new);
