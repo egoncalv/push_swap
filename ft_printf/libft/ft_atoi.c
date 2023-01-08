@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 21:21:16 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/08 15:24:22 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:29:29 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int			i;
+	int			sign;
+	long int	res;
 
 	res = 0;
 	i = 0;

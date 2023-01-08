@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/08 14:54:14 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/08 17:33:23 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ t_stack	*parse_stack(char **argv)
 		j = -1;
 		while (arg[++j])
 		{
-			if (is_duplicate(stack, ft_atoi(arg[j])) || !(is_nbr(arg[j])))
+			if (is_duplicate(stack, (int)ft_atoi(arg[j])) || !(is_nbr(arg[j]))
+				|| ft_atoi(arg[j]) > INT_MAX || ft_atoi(arg[j]) < INT_MIN)
 			{
 				free_2d_array(arg);
 				free_stack(stack);
 				exit_error();
 			}
-			stack_add_back(&stack, newstack(ft_atoi(arg[j])));
+			stack_add_back(&stack, newstack((int)ft_atoi(arg[j])));
 		}
 		free_2d_array(arg);
 	}
