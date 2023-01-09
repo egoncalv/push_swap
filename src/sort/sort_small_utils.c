@@ -6,75 +6,46 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:54:51 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/06 08:50:05 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/09 23:55:24 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	insert_top(t_stack **a, t_stack **b, int i)
+void	send_smallest(t_stack **a, t_stack **b)
 {
-	int	rra_n;
+	t_stack	*tmp;
+	int		min;
+	int		index;
 
-	rra_n = i;
-	while (i > 0)
+	tmp = *a;
+	min = (*a)->content;
+	while (tmp)
 	{
-		ra(a);
-		i--;
+		if (min > tmp->content)
+			min = tmp->content;
+		tmp = tmp->next;
 	}
-	pa(a, b);
-	while (rra_n > 0)
+	index = find_index(*a, min);
+	while ((*a)->content != min)
 	{
-		rra(a);
-		rra_n--;
+		if (index <= stack_size(*a) / 2)
+			ra(a);
+		else
+			rra(a);
 	}
+	pb(a, b);
 }
 
-void	insert_bottom(t_stack **a, t_stack **b, int i)
+int	find_index(t_stack *stack, int n)
 {
-	int	rra_n;
-	int	ra_n;
+	int	index;
 
-	rra_n = stack_size(*a) - i;
-	if (stack_size(*a) == 4)
-		ra_n = i - 1;
-	else
-		ra_n = i;
-	while (rra_n > 0)
+	index = 0;
+	while (stack->content != n)
 	{
-		rra(a);
-		rra_n--;
-	}
-	pa(a, b);
-	while (ra_n > 0)
-	{
-		ra(a);
-		ra_n--;
-	}
-}
-
-int	get_correct_pos(t_stack *stack, int n)
-{
-	int	i;
-
-	i = 0;
-	while (stack)
-	{
-		if (n < stack->content)
-			return (i);
+		index++;
 		stack = stack->next;
-		i++;
 	}
-	return (0);
-}
-
-int	is_bigger(t_stack *a, int n)
-{
-	while (a)
-	{
-		if (n < a->content)
-			return (0);
-		a = a->next;
-	}
-	return (1);
+	return (index);
 }

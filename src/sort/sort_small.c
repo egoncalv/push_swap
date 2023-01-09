@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 01:24:20 by egoncalv          #+#    #+#             */
-/*   Updated: 2022/12/21 19:17:29 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/09 23:44:32 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,11 @@ void	sort_three(t_stack **a)
 
 void	sort_five(t_stack **a, t_stack **b)
 {
-	int	pos;
-
 	while (stack_size(*a) != 3)
-		pb(a, b);
+		send_smallest(a, b);
+	if ((*b)->content < (*b)->next->content)
+		sb(*b);
 	sort_three(a);
-	while (*b)
-	{
-		if (is_bigger(*a, (*b)->content))
-		{
-			pa(a, b);
-			ra(a);
-		}
-		else
-		{
-			pos = get_correct_pos(*a, (*b)->content);
-			if (pos > stack_size(*a) / 2)
-				insert_bottom(a, b, pos);
-			else
-				insert_top(a, b, pos);
-		}
-	}
+	pa(a, b);
+	pa(a, b);
 }
