@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2023/01/08 14:57:17 by egoncalv         ###   ########.fr        #
+#    Updated: 2023/01/11 16:29:39 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,10 @@ $(NAME): $(OBJ)
 clean:
 	@rm -rf $(OBJ)
 	@rm -rf $(LIB_OBJ)
-	@rm -rf $(BONUS_OBJ)
 
 fclean: clean
 	@$(MAKE) -C ft_printf/ fclean
 	@rm -rf $(NAME)
-	@rm -rf $(BONUS_NAME)
 
 re: fclean $(NAME)
 
