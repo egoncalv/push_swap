@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 15:22:31 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/08 18:00:36 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:28:07 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_split(char const *s, char c)
 	int		k;
 	char	**array;
 
-	array = (char **)malloc(sizeof(char *) * ft_wordcntr(s, c) + 1);
+	array = ft_calloc(ft_wordcntr(s, c) + 1, sizeof(char *));
 	if (!array)
 		return (0);
 	i = 0;

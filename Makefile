@@ -6,11 +6,11 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 00:53:41 by erickbarros       #+#    #+#              #
-#    Updated: 2023/01/11 16:29:39 by egoncalv         ###   ########.fr        #
+#    Updated: 2023/01/12 19:23:25 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address 
 
 NAME = push_swap
 

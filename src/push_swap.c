@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:38 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/09 23:55:45 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:25:59 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,27 @@ t_stack	*parse_stack(char **argv)
 	while (argv[++i])
 	{
 		arg = ft_split(argv[i], ' ');
-		j = -1;
-		while (arg[++j])
+		j = 0;
+		while (arg[j])
 		{
 			if (is_duplicate(stack, (int)ft_atoi(arg[j])) || !(is_nbr(arg[j]))
 				|| ft_atoi(arg[j]) > INT_MAX || ft_atoi(arg[j]) < INT_MIN)
 			{
-				free_2d_array(arg);
-				free_stack(stack);
+				free_things(stack, arg);
 				exit_error();
 			}
 			stack_add_back(&stack, newstack((int)ft_atoi(arg[j])));
+			j++;
 		}
 		free_2d_array(arg);
 	}
 	return (stack);
+}
+
+void	free_things(t_stack *stack, char **array)
+{
+	free_stack(stack);
+	free_2d_array(array);
 }
 
 void	free_stack(t_stack *stack)

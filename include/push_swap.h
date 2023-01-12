@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 00:53:29 by erickbarros       #+#    #+#             */
-/*   Updated: 2023/01/09 23:53:52 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:26:20 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	print_stacks(t_stack *a, t_stack *b);
 t_stack	*parse_stack(char **argv);
 void	free_stack(t_stack *stack);
 void	free_2d_array(char **array);
+void	free_things(t_stack *stack, char **array);
 
 t_stack	*newstack(int content);
 void	stack_add_back(t_stack **stack, t_stack *new);
