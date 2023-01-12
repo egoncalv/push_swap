@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:34:59 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/01/08 16:03:52 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:09:03 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sort_medium(t_stack **a, t_stack **b)
 
 	if (is_sorted(*a, stack_size(*a)))
 		return ;
-	mid = malloc(sizeof(t_mid *));
+	mid = malloc(sizeof(t_mid));
 	i = -1;
 	while (stack_size(*a) > 2)
 	{
@@ -55,7 +55,7 @@ void	sort_chunk_a(t_stack **a, t_stack **b, int chunk_size)
 	int		tmp;
 
 	new_chunk_size = 0;
-	mid = malloc(sizeof(t_mid *));
+	mid = malloc(sizeof(t_mid));
 	while (chunk_size && !is_sorted(*a, chunk_size))
 	{
 		if (chunk_size == 2)
@@ -80,7 +80,7 @@ void	sort_chunk_b(t_stack **a, t_stack **b, int chunk_size)
 	int		tmp;
 
 	new_chunk_size = 0;
-	mid = malloc(sizeof(t_mid *));
+	mid = malloc(sizeof(t_mid));
 	while (chunk_size)
 	{
 		if (chunk_size <= 2)
